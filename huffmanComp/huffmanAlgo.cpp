@@ -9,8 +9,10 @@ int main (int argc, char *argv[]) {
         return 0;
     }
 
-    std::string input = argv[1];
-    
+    std::string data(argv[1]);
+    for (auto c : data) {
+        std::cout << c << std::endl;
+    }
 
     return 0;
 }
