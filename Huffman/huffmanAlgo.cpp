@@ -1,5 +1,3 @@
-// Credit: Geeks for Geeks Huffman Coding
-
 #include <string>
 #include <vector>
 #include <unordered_map>

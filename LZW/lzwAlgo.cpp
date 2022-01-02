@@ -1,7 +1,3 @@
-// if one wants to use LZW for security purposes they would simply start storing character pairs at random numbers
-// such that only the sender/server has the information necessary to decode the encoded string
-// It can be equivalent to encryption in the sense that the
-
 #include <string>
 #include <vector>
 #include <unordered_map>
@@ -11,21 +7,28 @@ using namespace std;
 
 vector<int> encoding(string s1) {
     cout << "Encoding\n";
+    // table for storing codes (can be stored by a server to simplify decoding)
     unordered_map<string, int> table;
+
+    // adding each individual characters code to encoding table
     for (int i = 0; i <= 255; i++) {
         string ch = "";
         ch += char(i);
         table[ch] = i;
     }
  
-    string p = "", c = "";
+    string p = "";
+    string c = "";
     p += s1[0];
     int code = 256;
     vector<int> output_code;
     cout << "String\tOutput_Code\tAddition\n";
+
     for (int i = 0; i < s1.length(); i++) {
-        if (i != s1.length() - 1)
+        if (i != s1.length() - 1) {
             c += s1[i + 1];
+        }
+
         if (table.find(p + c) != table.end()) {
             p = p + c;
         }
@@ -37,10 +40,13 @@ vector<int> encoding(string s1) {
             code++;
             p = c;
         }
+
         c = "";
     }
+    // clean up for last character
     cout << p << "\t" << table[p] << endl;
     output_code.push_back(table[p]);
+    
     return output_code;
 }
 
@@ -80,10 +86,16 @@ void decoding(vector<int> op) {
     }
 }
 
-int main() {
+int main (int argc, char *argv[]) {
+    if (argc != 2) {
+        std::cout << "Problem with input for compression!" << std::endl;
+        return 0;
+    }
+
+    std::string data(argv[1]);
+
     cout << endl;
-    string s = "WYS*WYGWYS*WYSWYSG";
-    vector<int> output_code = encoding(s);
+    vector<int> output_code = encoding(data);
     cout << "Output Codes are: ";
     for (int i = 0; i < output_code.size(); i++) {
         cout << output_code[i] << " ";
@@ -91,17 +103,6 @@ int main() {
     cout << endl;
     decoding(output_code);
     cout << endl << endl;
+    
+    return 0;
 }
-
-
-
-// int main (int argc, char *argv[]) {
-//     if (argc != 2) {
-//         std::cout << "Problem with input for compression!" << std::endl;
-//         return 0;
-//     }
-
-//     std::string data(argv[1]);
-
-//     return 0;
-// }
