@@ -24,6 +24,11 @@ Lossless is used where confidentiality is needed. Formats like like BMP, GIF, RA
 
 
 ### What I have implemented (And why)
-```Note: This will be filled in at the end when I figure out how each method is used and I can comment on each method```
 - Huffman compression
-- LZW
+- LZW (Used in Unix file compression utility `compress` and in GIF)
+
+
+### Comparison of methods
+- LZW versus Huffman
+```LZW done in a single pass, is more simple and requires no prior info on data stream```
+```
