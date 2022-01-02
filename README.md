@@ -1,6 +1,8 @@
 # compressionTechniques
 ### Generel Info
 
+*NOTE: In the middle of creating this repo I discovered a fabulous resource for guiding someone interested in data compresson: https://go-compression.github.io/. Please check this page out as it is great!*
+
 We need compression to be able to send files over a network in a effecient manner and to be able to save space on our VMs.
 
 The techniques to achieve compression fall under 2 categories: lossy and lossless(def. evident from words).
