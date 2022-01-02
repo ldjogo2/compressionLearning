@@ -5,6 +5,7 @@
 
 using namespace std;
 
+// starts encoding sequentially from 256
 vector<int> encoding(string s1) {
     cout << "Encoding\n";
     // table for storing codes (can be stored by a server to simplify decoding)
@@ -17,40 +18,45 @@ vector<int> encoding(string s1) {
         table[ch] = i;
     }
  
-    string p = "";
-    string c = "";
-    p += s1[0];
+    string prev = "";
+    string curr = "";
+    prev += s1[0];
     int code = 256;
+
     vector<int> output_code;
     cout << "String\tOutput_Code\tAddition\n";
 
     for (int i = 0; i < s1.length(); i++) {
+        // if not last encoding curr goes ahead
         if (i != s1.length() - 1) {
-            c += s1[i + 1];
-        }
+            curr += s1[i + 1];
+        }  
 
-        if (table.find(p + c) != table.end()) {
-            p = p + c;
+        // if encoding exists set string which is stored to reflect it
+        if (table.find(prev + curr) != table.end()) {
+            prev = prev + curr;
         }
         else {
-            cout << p << "\t" << table[p] << "\t\t"
-                 << p + c << "\t" << code << endl;
-            output_code.push_back(table[p]);
-            table[p + c] = code;
+            cout << prev << "\t" << table[prev] << "\t\t"
+                 << prev + curr << "\t" << code << endl;
+            output_code.push_back(table[prev]);
+            table[prev + curr] = code;
             code++;
-            p = c;
+            prev = curr;
         }
 
-        c = "";
+        // needed for ease of string operations and to reset our current encoding outlook
+        curr = "";
     }
-    // clean up for last character
-    cout << p << "\t" << table[p] << endl;
-    output_code.push_back(table[p]);
+
+    // clean up for last encoding (no curr)
+    cout << prev << "\t" << table[prev] << endl;
+    output_code.push_back(table[prev]);
     
     return output_code;
 }
 
-
+// this decoding only works assuming UNIX standard ascii storage and encoding stores in a sequential manner from 256 onwards
 void decoding(vector<int> op) {
     cout << "\nDecoding\n";
     
@@ -86,6 +92,9 @@ void decoding(vector<int> op) {
     }
 }
 
+
+// DRIVER CODE for LZW compression
+// Can be altered to have a storing table(usually 4096 char*) so decoding can be as simple as accessing code location
 int main (int argc, char *argv[]) {
     if (argc != 2) {
         std::cout << "Problem with input for compression!" << std::endl;
@@ -103,6 +112,6 @@ int main (int argc, char *argv[]) {
     cout << endl;
     decoding(output_code);
     cout << endl << endl;
-    
+
     return 0;
 }
