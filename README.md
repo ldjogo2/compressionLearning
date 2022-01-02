@@ -1,5 +1,4 @@
 # compressionTechniques
-*NOTE: In the middle of creating this repo I discovered a fabulous resource for guiding someone interested in data compresson: https://go-compression.github.io/. Please check this page out as it is great!*
 
 ### Generel Info
 
@@ -41,3 +40,4 @@ Lossless is used where confidentiality is needed. Formats like like BMP, GIF, RA
 
 ### References
 1. Geeks for Geeks
+2. https://go-compression.github.io/
