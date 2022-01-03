@@ -26,6 +26,7 @@ Lossless is used where confidentiality is needed. Formats like like BMP, GIF, RA
 ### What I have implemented
 - Huffman compression (Used as core of most industry compression)
 - LZW (Used in Unix file compression utility `compress` and in GIF)
+- Dictionary Coding ()
 - Arithmetic Coding ()
 
 
