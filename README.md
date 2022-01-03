@@ -1,4 +1,5 @@
 # compressionTechniques
+
 ### Generel Info
 
 We need compression to be able to send files over a network in a effecient manner and to be able to save space on our VMs.
@@ -40,3 +41,4 @@ Lossless is used where confidentiality is needed. Formats like like BMP, GIF, RA
 
 ### References
 1. Geeks for Geeks
+2. https://go-compression.github.io/
