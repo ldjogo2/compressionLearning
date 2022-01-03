@@ -42,3 +42,4 @@ Lossless is used where confidentiality is needed. Formats like like BMP, GIF, RA
 ### References
 1. Geeks for Geeks
 2. https://go-compression.github.io/
+
