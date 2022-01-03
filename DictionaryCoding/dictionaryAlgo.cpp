@@ -18,25 +18,69 @@ string encode(string fileName) {
 	}
     
     string sLine = "";
-    string delimiter = ":";
-    int pos;
+    string stringToEncode = "";
     while(getline(myfile,sLine)) {
-        // get the position of the delimiter
-        pos = sLine.find(delimiter);
-
-        // get the strings needed
-        string toReplace = sLine.substr(0,pos);
-        string replacer = sLine.substr(pos+1, sLine.length());
-    
-        // store them in our dictionary
-        encoder.push_back(make_pair(toReplace, replacer));
+        stringToEncode += sLine;
     }
     myfile.close();
-    return "";
+
+    // actually replacing what needs to be replaced
+    int numMatch;
+    string whatWeAreMatching;
+    int sizeOfMatch;
+    for (auto pairOfEncodings : encoder) {
+        numMatch = 0;
+        whatWeAreMatching = pairOfEncodings.first;
+        sizeOfMatch = whatWeAreMatching.length();
+        int loopLength = stringToEncode.length();
+        
+        for (int i = 0; i < loopLength; i++) {
+            if (whatWeAreMatching[numMatch] == stringToEncode[i]) {
+                numMatch++;
+            }
+            else {
+                numMatch = 0;
+            }
+
+            if (numMatch == sizeOfMatch) {
+                stringToEncode.replace(i - sizeOfMatch + 1, sizeOfMatch, pairOfEncodings.second);
+                numMatch = 0;
+                i = i - sizeOfMatch + pairOfEncodings.second.length();
+            }
+        }
+    }
+
+    return stringToEncode;
 }
 
 string decode(string encodedStr) {
-    return "";
+    // actually replacing what needs to be replaced
+    int numMatch;
+    string whatWeAreMatching;
+    int sizeOfMatch;
+    for (auto pairOfEncodings : encoder) {
+        numMatch = 0;
+        whatWeAreMatching = pairOfEncodings.second;
+        sizeOfMatch = whatWeAreMatching.length();
+        int loopLength = encodedStr.length();
+        
+        for (int i = 0; i < loopLength; i++) {
+            if (whatWeAreMatching[numMatch] == encodedStr[i]) {
+                numMatch++;
+            }
+            else {
+                numMatch = 0;
+            }
+
+            if (numMatch == sizeOfMatch) {
+                encodedStr.replace(i - sizeOfMatch + 1, sizeOfMatch, pairOfEncodings.first);
+                numMatch = 0;
+                i = i - sizeOfMatch + pairOfEncodings.first.length();
+            }
+        }
+    }
+
+    return encodedStr;
 }
 
 void createDict (string dictFileName) {

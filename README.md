@@ -40,6 +40,8 @@ Lossless is used where confidentiality is needed. Formats like like BMP, GIF, RA
 
 ```Dictionary coding is a extremely simplistic yet highly effective, giving an extremely effective cloud encoding/decoding technique.```
 
+```Dictionary coding is only really effective when the file we are compressing is comprised of common language, which happens to be a lot of files on the internet today.```
+
 ### References
 1. Geeks for Geeks
 2. https://go-compression.github.io/
