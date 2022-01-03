@@ -27,7 +27,7 @@ Lossless is used where confidentiality is needed. Formats like like BMP, GIF, RA
 ### What I have implemented
 - Huffman compression (Used as core of most industry compression)
 - LZW (Used in Unix file compression utility `compress` and in GIF)
-- Dictionary Coding ()
+- Dictionary Coding (Used in web compression algorithms (Brotli more specifically))
 - Arithmetic Coding ()
 
 
@@ -38,6 +38,7 @@ Lossless is used where confidentiality is needed. Formats like like BMP, GIF, RA
 
 ```Huffman modified can capture patterns as well as shrink the text size by quite a lot. To me it seems like a far superior basis for an algo.```
 
+```Dictionary coding is a extremely simplistic yet highly effective, giving an extremely effective cloud encoding/decoding technique.```
 
 ### References
 1. Geeks for Geeks
