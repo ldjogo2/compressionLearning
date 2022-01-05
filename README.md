@@ -1,4 +1,7 @@
 # compressionTechniques
+# UNFINISHED - LOOK AT Issues
+
+
 
 ### Generel Info
 
