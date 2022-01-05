@@ -11,17 +11,19 @@ They can also be known as irreversible compression and reversible compression re
 Lossy is used in files where perfect data construction isn't necessary like JPEG, MP3, MPEG. (human senses can't measure data loss)
 
 Lossless is used where confidentiality is needed. Formats like like BMP, GIF, RAW, ONG, etc. use it.
-##### Some Lossy Compression Methods
+##### Examples of Lossy Compression Methods
 1. Discrete Cosine Transform
 2. Vector Quantisation
 3. Transform Coding
 
-##### Some Lossless Compression Methods
+##### Examples of Lossless Compression Methods
 1. Huffman compression
 2. Run Length Encoding
 3. string-table compression
 4. Lempel Ziff Welch
 5. zlib
+6. Dictionary Coding
+7. Arithmetic Coding
 
 
 ### What I have implemented
